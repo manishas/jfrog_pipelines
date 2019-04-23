@@ -1,5 +1,5 @@
 resources:
-  - name: ankul_sample_node
+  - name: node_app
     type: gitRepo
     repoPath: manishas/sample_node
     configuration:
@@ -10,9 +10,9 @@ resources:
       sha: master
 
 pipelines:
-  - name: ankul_test_pipeline
+  - name: node_ci_pipeline
     steps:
-      - name: ankul_test_bash_step
+      - name: node_build_step
         type: bash
         setup:
           runtime: 
@@ -26,7 +26,7 @@ pipelines:
             - orbiteraArtifactory
         triggeredBy:
           resources:
-            - ankul_sample_node 
+            - node_app 
         execution:
           onExecute:
             - echo "executing test bash step..."
