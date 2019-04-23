@@ -1,7 +1,7 @@
 resources:
   - name: ankul_sample_node
     type: gitRepo
-    repoPath: ankul-shippable/node_node
+    repoPath: ankul-shippable/sample_node
     configuration:
       integrationName: ankul_github
       branches:
