@@ -29,5 +29,5 @@ pipelines:
           onExecute:
             - echo "executing test bash step..."
             - printenv
-            - docker login -u $int_docker_registry_username -p $int_docker_registry_password $int_docker_registry_url 
-            - docker pull $int_docker_registry_url/docker-virtual/busybox:latest
+            - docker login -u $int_docker_registry_username -p $int_docker_registry_password $int_docker_registry_url
+            - docker pull $(echo $int_docker_registry_url | awk -F[/:] '{print $4}')/docker-virtual/busybox:latest
