@@ -11,14 +11,16 @@ resources:
 
 pipelines:
   - name: ankul_test_pipeline
-    setup:
-      runtime: host
     steps:
       - name: ankul_test_bash_step
         type: bash
         setup:
           runtime: 
-            type: host
+            type: image
+            image:
+              custom:
+                name: drydock/u16all
+                tag: master
         requires:
           integrations:
             - docker_registry
