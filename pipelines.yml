@@ -27,6 +27,6 @@ pipelines:
             - ankul_sample_node 
         execution:
           onExecute:
-            - echo "First run....."
             - echo "executing test bash step..."
             - printenv
+            - docker login -u $int_docker_registry_username -p $int_docker_registry_password $int_docker_registry_url 
