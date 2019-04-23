@@ -35,3 +35,5 @@ pipelines:
             - echo $rt_ip
             - echo $rt_port     
             - docker pull $rt_ip:$rt_port/docker-virtual/busybox:latest
+            - docker tag $rt_ip:$rt_port/docker-virtual/busybox:latest $rt_ip:$rt_port/docker-virtual/busybox:test1
+            - docker push $rt_ip:$rt_port/docker-virtual/busybox:test1
