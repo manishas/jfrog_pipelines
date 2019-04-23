@@ -1,0 +1,28 @@
+resources:
+  - name: sample_node
+    type: gitRepo
+    repoPath: ankul-shippable/node_node
+    configuration:
+      integrationName: ankul_github
+      branches:
+        only: master
+    initialVersion:
+      sha: master
+
+pipelines:
+  - name: test_pipeline
+    setup:
+      runtime: host
+    steps:
+      - name: test_bash_step
+        type: bash
+        setup:
+          runtime: 
+            type: host
+        triggeredBy:
+          resources:
+            - sample_node 
+        execution:
+          onExecute:
+            - echo "First run....."
+            - echo "executing test bash step..."
