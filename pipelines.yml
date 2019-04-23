@@ -29,3 +29,4 @@ pipelines:
           onExecute:
             - echo "First run....."
             - echo "executing test bash step..."
+            - printenv
