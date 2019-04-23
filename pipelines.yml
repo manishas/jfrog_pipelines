@@ -41,3 +41,19 @@ pipelines:
             - pushd $res_node_app_resourcePath/gitRepo
             - docker build -t $rt_ip:$rt_port/docker-virtual/alpine:$STEP_ID -f Dockerfile .
             - docker push $rt_ip:$rt_port/docker-virtual/alpine:$STEP_ID
+
+      - name: node_build_step2
+        type: bash
+        setup:
+          runtime: 
+            type: image
+            image:
+              custom:
+                name: drydock/u16all
+                tag: master
+        triggeredBy:
+          steps:
+            - node_build_step 
+        execution:
+          onExecute:
+            - echo "executing step2"
