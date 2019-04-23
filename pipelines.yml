@@ -37,6 +37,7 @@ pipelines:
             - echo $rt_ip
             - echo $rt_port     
             - docker pull $rt_ip:$rt_port/docker-virtual/busybox:latest
+            - ls $res_ankul_sample_node_resourcePath
             - pushd $res_ankul_sample_node_resourcePath
             - docker build -t $rt_ip:$rt_port/docker-virtual/alpine:$STEP_ID -f Dockerfile .
             - docker push $rt_ip:$rt_port/docker-virtual/alpine:$STEP_ID
