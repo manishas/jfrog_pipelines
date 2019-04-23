@@ -19,6 +19,9 @@ pipelines:
         setup:
           runtime: 
             type: host
+        requires:
+          integrations:
+            - docker_registry
         triggeredBy:
           resources:
             - ankul_sample_node 
