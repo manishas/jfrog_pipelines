@@ -30,6 +30,8 @@ pipelines:
             - echo "executing test bash step..."
             - printenv
             - docker login -u $int_docker_registry_username -p $int_docker_registry_password $int_docker_registry_url
-            - rt_url=$(echo $int_docker_registry_url | awk -F[/:] '{print $4}')
-            - echo $rt_url
-            - docker pull $rt_url/docker-virtual/busybox:latest
+            - rt_ip=$(echo $int_docker_registry_url | awk -F[/:] '{print $4}')
+            - rt_port=$(echo $int_docker_registry_url | awk -F[/:] '{print $5}')
+            - echo $rt_ip
+            - echo $rt_port     
+            - docker pull $rt_ip:$rt_port/docker-virtual/busybox:latest
